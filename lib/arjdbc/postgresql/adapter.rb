@@ -284,9 +284,7 @@ module ::ArJdbc
 
     def pk_and_sequence_for(table) #:nodoc:
       # At RPX, all primary keys are 'id' - MONKEY PATCH but fixes jRuby support in Portal3
-      ap ['id', extract_schema_and_table(table)[1] ]
-      # ['id', extract_pg_identifier_from_name(table).reject { |i| i.nil? }.last ]
-      ['id', extract_schema_and_table(table)[1] ]
+      ['id', "#{extract_schema_and_table(table)[1]}_id_seq" ]
     end
 
     # Insert logic for pre-AR-3.1 adapters
